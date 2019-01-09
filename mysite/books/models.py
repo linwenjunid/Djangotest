@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -40,6 +41,7 @@ class Book(models.Model):
     # 设置时间字段为空必须同时指定 blank=True, null=True
     publication_date = models.DateField('出版日期', blank=True, null=True)
     num_pages = models.IntegerField(blank=True, null=True)
+    master = models.ForeignKey(User, verbose_name = '责任人', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.title
