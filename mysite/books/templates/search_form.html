@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+{% load mytags %}
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="{% url 'books:search'%}" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    tag rep("过滤器函数应该总有返回值","函数"): <br>{{myString|rep:"函数"}}<br>
+    tag cut4("UnicodeEncodeError"): <br>{% cut4 "UnicodeEncodeError" %}<br>
+    tag books:{% books %}<br>
+    tag current_time:<br>
+    {% current_time "%Y-%m-%d %H:%M" %}
+</body>
+</html>

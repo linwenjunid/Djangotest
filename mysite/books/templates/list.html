@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for contact in contacts %}
+    {# Each "contact" is a Contact model object. #}
+    {{ contact.title|upper }}<br />
+
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; 首页</a>
+            <a href="?page={{ contacts.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">下一页</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">末页 &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>

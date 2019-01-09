@@ -1,0 +1,9 @@
+python manage.py makemigrations
+python manage.py migrate
+python manage.py sqlmigrate polls 0001
+
+#调试神器
+assert False
+
+
+python manage.py startapp register

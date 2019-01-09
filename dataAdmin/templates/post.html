@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+</head>
+<body>
+    <form action="/search/" method="post">
+        {% csrf_token %}
+        <input type="text" name="q">
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>{{ rlt }}</p>
+</body>
+</html>
