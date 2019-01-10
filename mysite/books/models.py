@@ -48,6 +48,7 @@ class Book(models.Model):
     num_pages = models.IntegerField(blank=True, null=True)
     master = models.ForeignKey(User, verbose_name = '责任人', on_delete = models.PROTECT, null = True)
     last_update_time = models.DateTimeField('最后一次更新日期', auto_now=True)
+    status = models.BooleanField('状态', default=True)
 
     def __str__(self):
         return self.title

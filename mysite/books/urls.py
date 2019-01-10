@@ -17,10 +17,7 @@ urlpatterns = (
     path('downbooks/', views.books_list_plaintext, name='downbooks'),
     path('list/', views.books_list, name='booklist'),
     path('api/',include(router.urls), name = 'api'),
-    path('api-token-auth/', obtain_jwt_token)
+    path('api-token-auth/', obtain_jwt_token),
     )
 
-
-
-
-#urlpatterns += tuple(router.urls)  # 将路由器中的所有路由信
+# urlpatterns += tuple(router.urls)  # 将路由器中的所有路由信

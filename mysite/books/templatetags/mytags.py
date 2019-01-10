@@ -22,7 +22,7 @@ def cut4(format_string):
 def books(context):
     books = Book.objects.all()
     return {'books': books,
-            'str':context['mystring']}
+            'str':context['myString']}
 
 
 @register.tag(name="current_time")
