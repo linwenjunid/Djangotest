@@ -97,15 +97,14 @@ class BookAdmin(admin.ModelAdmin):
 
     # 颜色显示 动作
     def new_status(self):
-        p = 0
         if not self.status:
             return format_html(
-                '<a href="{}/update_status/?p={}"><span style="color: red;">{}</span></a>',
-                self.id, p, '无效')
+                '<a href="javascript:void(0);" values="{}/update_status/" onclick="update_status(this)"><span style="color: red;">{}</span></button>',
+                self.id, '无效')
         else:
             return format_html(
-                '<a href="{}/update_status/?p={}"><span style="color: green;">{}</span></a>',
-                self.id, p, '有效')
+                '<a href="javascript:void(0);" values="{}/update_status/" onclick="update_status(this)"><span style="color: green;">{}</span></button>',
+                self.id, '有效')
 
     new_status.short_description = '状态'
 
@@ -122,7 +121,13 @@ class BookAdmin(admin.ModelAdmin):
         book = get_object_or_404(Book, pk=book_id)
         book.status = not book.status
         book.save()
-        return redirect(reverse('admin:books_book_changelist') + "?p="+request.GET.get('p',0))
+        # 保证页数参数的正确传递
+        str = [ x+'='+request.GET[x] for x in request.GET]
+        str = "&".join(str)
+        if str:
+            str = "?"+str
+        print(str)
+        return redirect(reverse('admin:books_book_changelist') + str)
 
     list_display = (
         'id',
