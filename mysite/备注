@@ -17,3 +17,6 @@ function update_status(obj){
     window.location.href=obj.getAttribute('values')+this.location.search
 }
 </script>
+
+pip install git+git://github.com/sshwsfc/xadmin.git@django2
+pip install git+https://github.com/sshwsfc/xadmin.git@django2

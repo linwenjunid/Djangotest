@@ -122,11 +122,10 @@ class BookAdmin(admin.ModelAdmin):
         book.status = not book.status
         book.save()
         # 保证页数参数的正确传递
-        str = [ x+'='+request.GET[x] for x in request.GET]
+        str = [x + '=' + request.GET[x] for x in request.GET]
         str = "&".join(str)
         if str:
-            str = "?"+str
-        print(str)
+            str = "?" + str
         return redirect(reverse('admin:books_book_changelist') + str)
 
     list_display = (

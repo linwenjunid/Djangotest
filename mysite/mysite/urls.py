@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+import xadmin
 from django.urls import path, include
 from . import views
 
@@ -22,10 +23,11 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('contact/', include('contact.urls')),
     path('register/', include('register.urls')),
+    path('xadmin/', xadmin.site.urls),
     path('admin/', admin.site.urls),
     path('hello/', views.display_meta),
     path('', views.api)
 ]
 
-admin.site.site_header = '管理系统'
-admin.site.site_title = '管理系统'
+xadmin.site.site_header = '管理系统'
+xadmin.site.site_title = '管理系统'
