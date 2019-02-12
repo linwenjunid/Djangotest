@@ -32,6 +32,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #'zadminlte',
+    # #####################第三方插件/库
+    # adminlte 第三方库 需要pip install django-adminlte
+    'django_adminlte',
+    # adminlte-theme 第三方风格库 pip install django-adminlte 时自动安装
+    'django_adminlte_theme',
     'xadmin',
     'crispy_forms',
     'reversion',
@@ -64,7 +70,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'vuecode/dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -156,3 +162,8 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
+
+# Add for vue.js
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "vuecode/dist/static"),
+]

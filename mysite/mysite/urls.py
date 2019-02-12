@@ -17,6 +17,7 @@ from django.contrib import admin
 import xadmin
 from django.urls import path, include
 from . import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
@@ -26,7 +27,8 @@ urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('admin/', admin.site.urls),
     path('hello/', views.display_meta),
-    path('', views.api)
+    path('', views.api),
+    path('vue/',TemplateView.as_view(template_name="index.html")),
 ]
 
 xadmin.site.site_header = '管理系统'
