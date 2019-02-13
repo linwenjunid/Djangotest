@@ -6,8 +6,9 @@
       {{ book}}
     </li>
     <li>
-    <button v-on:click="go(previous)">上一页</button>
-    <button v-on:click="go(next)">下一页</button>
+    <button v-on:click="go(surl)">首页</button>
+    <button v-if="previous&&previous.length" v-on:click="go(previous)">上一页</button>
+    <button v-if="next&&next.length" v-on:click="go(next)">下一页</button>
     </li>
     </ol>
   </div>
@@ -20,8 +21,9 @@ export default {
     return {
       books: null,
       count:0,
-      next:0,
-      previous:0,
+      next:null,
+      previous:null,
+      surl:'http://127.0.0.1:8000/books/api/books/'
     }
   },
   methods: {
