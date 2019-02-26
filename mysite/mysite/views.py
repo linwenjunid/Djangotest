@@ -20,10 +20,11 @@ def api(request):
     r = requests.post(post_url, data, headers={'Content-Type':'application/json'})
     token = json.loads(r.text)
 
+    payload = {'page': '2', 'page_size': '3'}
     headers = {'Authorization':'JWT '+token['token'],
                'Content-Type':'application/json'}
     get_url = 'http://127.0.0.1:8000/books/api/books/'
-    r = requests.get(get_url, headers=headers)
+    r = requests.get(get_url, params=payload, headers=headers)
     data = json.loads(r.text)
     return HttpResponse((i['title']+"<br>" for i in data['results']))
     # return redirect('/books/api/')
