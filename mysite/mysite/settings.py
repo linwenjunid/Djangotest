@@ -35,9 +35,11 @@ INSTALLED_APPS = [
     #'zadminlte',
     # #####################第三方插件/库
     # adminlte 第三方库 需要pip install django-adminlte
-    'django_adminlte',
+    # 'django_adminlte',
     # adminlte-theme 第三方风格库 pip install django-adminlte 时自动安装
-    'django_adminlte_theme',
+    # 'django_adminlte_theme',
+    'django_celery_results',
+    'django_celery_beat',
     'xadmin',
     'crispy_forms',
     'reversion',
@@ -167,3 +169,11 @@ REST_FRAMEWORK = {
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "vuecode/dist/static"),
 ]
+
+# 关于celery的redis配置
+CELERY_BROKER_URL = 'redis://:hadoop@192.168.134.200:6379/0' # Broker配置，使用Redis作为消息中间件
+
+CELERY_RESULT_BACKEND = 'django-db' # BACKEND配置，这里使用redis
+# CELERY_RESULT_BACKEND = 'redis://:hadoop@192.168.134.200:6379/1' # BACKEND配置，这里使用redis
+
+CELERY_RESULT_SERIALIZER = 'json' # 结果序列化方案

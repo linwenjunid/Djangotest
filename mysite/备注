@@ -20,3 +20,8 @@ function update_status(obj){
 
 pip install git+git://github.com/sshwsfc/xadmin.git@django2
 pip install git+https://github.com/sshwsfc/xadmin.git@django2
+
+
+# celery消费者启动
+celery -A mysite worker -l info -P eventlet
+celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler

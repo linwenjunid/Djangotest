@@ -24,6 +24,7 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('contact/', include('contact.urls')),
     path('register/', include('register.urls')),
+    path('celeryapp/', include('celeryapp.urls')),
     path('xadmin/', xadmin.site.urls),
     path('admin/', admin.site.urls),
     path('hello/', views.display_meta),
