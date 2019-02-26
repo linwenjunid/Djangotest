@@ -28,7 +28,7 @@ urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('admin/', admin.site.urls),
     path('hello/', views.display_meta),
-    path('', views.api),
+    path('api/', views.api),
     path('vue/',TemplateView.as_view(template_name="index.html")),
 ]
 
